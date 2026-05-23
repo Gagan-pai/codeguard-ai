@@ -3,8 +3,16 @@ import CodeEditor from "./components/CodeEditor";
 import { reviewCode } from "./services/gemini";
 
 export default function App() {
-  const [code, setCode] = useState(`function hello() {
-  console.log("Hello World");
+  const [code, setCode] = useState(`function login(user, password, password) {
+  console.log(username)
+
+  if(password == "admin123"){
+    return true
+  }
+
+  var data = fetch("/api/users")
+
+  return
 }`);
 
   const [review, setReview] = useState("");
@@ -18,6 +26,11 @@ export default function App() {
     setReview(response);
 
     setLoading(false);
+  };
+
+  const copyReview = () => {
+    navigator.clipboard.writeText(review);
+    alert("Review copied!");
   };
 
   return (
@@ -58,16 +71,16 @@ export default function App() {
           border: "none",
           cursor: "pointer",
           borderRadius: "5px",
+          marginRight: "10px",
         }}
       >
         Review Code
       </button>
 
       <button
-        onClick={() => navigator.clipboard.writeText(review)}
+        onClick={copyReview}
         style={{
           padding: "10px 20px",
-          marginLeft: "10px",
           marginBottom: "20px",
           background: "#30363d",
           color: "white",

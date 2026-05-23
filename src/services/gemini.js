@@ -1,4 +1,22 @@
 export async function reviewCode(code) {
+  let issues = [];
+
+  if (code.includes("console.log")) {
+    issues.push("• Remove console.log in production");
+  }
+
+  if (code.includes("var ")) {
+    issues.push("• Use const or let instead of var");
+  }
+
+  if (code.includes("==")) {
+    issues.push("• Use strict equality ===");
+  }
+
+  if (code.includes("password")) {
+    issues.push("• Avoid hardcoded passwords");
+  }
+
   return `
 🚨 AI Code Review Report
 
@@ -7,22 +25,21 @@ export async function reviewCode(code) {
 • Missing error handling
 
 🟠 Warnings
-• Undefined variables possible
-• Console logs should be removed in production
+${issues.join("\n")}
 
 ⚡ Performance Suggestions
-• Use const instead of var
-• Avoid unnecessary function calls
+• Optimize function calls
+• Reduce unnecessary logging
 
 🟢 Best Practices
-• Improve variable naming
+• Improve naming conventions
 • Add comments for readability
 
 ✅ Suggested Improved Code
 
-function hello() {
+function improvedFunction() {
   try {
-    console.log("Hello World");
+    console.log("Improved Code");
   } catch (error) {
     console.error(error);
   }
