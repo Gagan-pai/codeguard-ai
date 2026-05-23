@@ -2,13 +2,20 @@
   "name": "ai-code-review",
   "private": true,
   "version": "0.0.0",
+
+  "engines": {
+    "node": "20.x"
+  },
+
   "type": "module",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
+
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@monaco-editor/react": "^4.7.0",
@@ -16,6 +23,7 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
+
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/react": "^19.2.14",
